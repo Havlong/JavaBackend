@@ -12,7 +12,7 @@ import java.util.Optional;
  * Fifth
  *
  * <p>Третья лабораторная работа по предмету Основы Web-программирования</p>
- * <p>Бригада №5<p/>
+ * <p>Бригада №5</p>
  *
  * @author havlong
  * @author Rabidus
