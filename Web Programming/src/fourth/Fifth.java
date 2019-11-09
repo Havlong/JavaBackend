@@ -6,6 +6,17 @@ import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Vector;
 
+/**
+ * 11.09.2019
+ * Fifth
+ *
+ * <p>Четвёртая лабораторная работа по предмету Основы Web-программирования</p>
+ * <p>Бригада №5<p/>
+ *
+ * @author havlong
+ * @author Rabidus
+ * @version 1.0
+ */
 public class Fifth {
     public static void main(String[] args) {
         try (
@@ -17,6 +28,14 @@ public class Fifth {
         }
     }
 
+    /**
+     * Программа, позволяющая проанализировать массив вещественных чисел, переданных через аргументы
+     * <p>
+     * Метод, при помощи которого можно избавиться от статики
+     *
+     * @param writer объект PrintWriter, направленный на выходной поток для вывода результата
+     * @param args   аргументы командной строки
+     */
     private void run(PrintWriter writer, String[] args) throws IOException {
         if (args.length == 0) {
             System.err.println("Пожалуйста, введите аргументы");
@@ -44,6 +63,19 @@ public class Fifth {
             System.err.println("Введите аргумент -h или --help, чтобы получить помощь");
             return;
         }
+        sortVector(writer, doubleVector);
+        calcMedian(writer, doubleVector);
+        calcAverage(writer, doubleVector);
+    }
+
+    /**
+     * Метод, сортирующий предоставленные числа и выводящий информацию о них
+     * Дублирует информацию в командную строку
+     *
+     * @param writer       объект PrintWriter, направленный на выходной поток для вывода результата
+     * @param doubleVector вектор из вещественных чисел для преобразования
+     */
+    private void sortVector(PrintWriter writer, Vector<Double> doubleVector) {
         writer.print("Vector до сортировки: [ ");
         System.out.print("Vector до сортировки: [ ");
         doubleVector.forEach(aDouble -> writer.print(aDouble + " "));
@@ -57,6 +89,17 @@ public class Fifth {
         doubleVector.forEach(aDouble -> System.out.print(aDouble + " "));
         writer.println("]");
         System.out.println("]");
+    }
+
+    /**
+     * Метод, вычисляющий медиану
+     * Дублирует информацию в командную строку
+     *
+     * @param writer       объект PrintWriter, направленный на выходной поток для вывода результата
+     * @param doubleVector вектор из вещественных чисел для преобразования
+     */
+    private void calcMedian(PrintWriter writer, Vector<Double> doubleVector) {
+        int size = doubleVector.size();
         writer.print("Медиана = ");
         System.out.print("Медиана = ");
         if (size % 2 == 0) {
@@ -66,6 +109,17 @@ public class Fifth {
             writer.println(doubleVector.get(size / 2));
             System.out.println(doubleVector.get(size / 2));
         }
+    }
+
+    /**
+     * Метод, вычисляющий среднее значение
+     * Дублирует информацию в командную строку
+     *
+     * @param writer       объект PrintWriter, направленный на выходной поток для вывода результата
+     * @param doubleVector вектор из вещественных чисел для преобразования
+     */
+    private void calcAverage(PrintWriter writer, Vector<Double> doubleVector) {
+        int size = doubleVector.size();
         writer.println("Среднее значение = " + (doubleVector.stream().mapToDouble(aDouble -> aDouble).sum() / size));
         System.out.println("Среднее значение = " + (doubleVector.stream().mapToDouble(aDouble -> aDouble).sum() / size));
     }

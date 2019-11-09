@@ -15,6 +15,7 @@ import java.util.Optional;
  * <p>Бригада №5<p/>
  *
  * @author havlong
+ * @author Rabidus
  * @version 1.0
  */
 public class Fifth {
