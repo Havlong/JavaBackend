@@ -2,7 +2,6 @@ package ru.pnzgu.models;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
-import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -16,16 +15,19 @@ import java.util.Objects;
 public class User {
     private String userName;
     private String password;
-    private LocalDate birthDate;
     private String name;
     private String surname;
+    private String car;
 
-    public User(String userName, String password, LocalDate birthDate, String name, String surname) {
+    public User(String userName, String password, String name, String surname, String car) {
         this.userName = userName;
         this.password = password;
-        this.birthDate = birthDate;
         this.name = name;
         this.surname = surname;
+        this.car = car;
+    }
+
+    public User() {
     }
 
     @Override
@@ -58,14 +60,6 @@ public class User {
         this.password = password;
     }
 
-    public LocalDate getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
-    }
-
     public String getName() {
         return name;
     }
@@ -80,5 +74,13 @@ public class User {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public String getCar() {
+        return car;
+    }
+
+    public void setCar(String car) {
+        this.car = car;
     }
 }

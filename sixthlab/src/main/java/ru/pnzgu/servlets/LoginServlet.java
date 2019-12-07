@@ -34,15 +34,16 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String userName = req.getParameter("userName");
+        String userName = req.getParameter("login");
         String password = req.getParameter("password");
 
         if (usersRepository.exists(userName, password)) {
             HttpSession session = req.getSession();
             session.setAttribute("user", userName);
-            req.getServletContext().getRequestDispatcher("/home").forward(req, resp);
+            resp.sendRedirect("/home");
         } else {
-            resp.sendError(404, "User not registered");
+            req.setAttribute("error", true);
+            doGet(req, resp);
         }
     }
 }

@@ -33,4 +33,14 @@ public class UsersRepositoryJsonImpl implements UsersRepository {
         }
         return false;
     }
+
+    @Override
+    public boolean exists(String userName) {
+        for (User user : JsonStorage.storage().users()) {
+            if (user.getUserName().equals(userName)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

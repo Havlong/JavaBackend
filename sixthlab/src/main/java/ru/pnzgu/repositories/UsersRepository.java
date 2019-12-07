@@ -15,4 +15,6 @@ public interface UsersRepository {
     List<User> findAll();
     void save(User user);
     boolean exists(String userName, String password);
+
+    boolean exists(String userName);
 }

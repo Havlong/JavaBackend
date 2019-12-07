@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.time.LocalDate;
 
 /**
  * 28.09.2019
@@ -38,11 +37,17 @@ public class SignUpServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String userName = req.getParameter("userName");
         String password = req.getParameter("password");
-        String name = req.getParameter("name");
-        String surname = req.getParameter("surname");
-        LocalDate birthDate = LocalDate.parse(req.getParameter("birthDate"));
-        User user = new User(userName, password, birthDate, name, surname);
-        usersRepository.save(user);
-        doGet(req, resp);
+        String name = req.getParameter("firstName");
+        String surname = req.getParameter("lastName");
+        String car = req.getParameter("car");
+        if (usersRepository.exists(userName)) {
+            req.setAttribute("error", true);
+            req.setAttribute("alert", "Пользователь с этим логином уже существует");
+            doGet(req, resp);
+        } else {
+            User user = new User(userName, password, name, surname, car);
+            usersRepository.save(user);
+            resp.sendRedirect("/");
+        }
     }
 }

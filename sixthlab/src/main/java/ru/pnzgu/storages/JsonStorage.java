@@ -6,6 +6,7 @@ import ru.pnzgu.models.User;
 
 import java.io.*;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * 28.09.2019
@@ -18,6 +19,7 @@ public class JsonStorage {
     private static final JsonStorage storage;
     private static final ObjectMapper mapper;
     private static final TypeReference userList;
+    private static final String FILE_PATH = "/home/havlong/Documents/users.json";
 
     static {
         storage = new JsonStorage();
@@ -26,7 +28,8 @@ public class JsonStorage {
     }
 
     private JsonStorage() {
-
+        if (!new File(FILE_PATH).exists())
+            writeJson(List.of());
     }
 
     public static JsonStorage storage() {
@@ -41,16 +44,17 @@ public class JsonStorage {
         List<User> users = readJson();
         assert users != null;
         assert user != null;
-        if (!users.contains(user)) {
-            users.add(user);
-        }
+        users.add(user);
         writeJson(users);
     }
 
     private void writeJson(List<User> users) {
         try (
-                PrintWriter writer = new PrintWriter(new FileWriter("users.json"));
+                PrintWriter writer = new PrintWriter(new FileWriter(FILE_PATH))
         ) {
+            if (users == null)
+                users = List.of();
+            mapper.setLocale(Locale.getDefault());
             mapper.writeValue(writer, users);
         } catch (IOException e) {
             e.printStackTrace();
@@ -59,10 +63,12 @@ public class JsonStorage {
 
     private List<User> readJson() {
         try (
-                BufferedReader reader = new BufferedReader(new FileReader("users.json"));
+                BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))
         ) {
             StringBuilder jsonBuilder = new StringBuilder();
             reader.lines().forEach(jsonBuilder::append);
+            if (jsonBuilder.toString().isBlank())
+                jsonBuilder.append("[]");
             return mapper.readValue(jsonBuilder.toString(), userList);
         } catch (IOException e) {
             e.printStackTrace();
