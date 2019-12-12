@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Шестая лабораторка</title>
-    <link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" type="text/css"/>
+    <link href="${pageContext.request.contextPath}/static/css/styles.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <nav class="navbar navbar-dark bg-primary">
