@@ -15,6 +15,8 @@ import java.io.IOException;
  * 28.09.2019
  * SignUpServlet
  *
+ * Сервлет, отвечающий за регистрацию новых пользователей
+ *
  * @author havlong
  * @version 1.0
  */

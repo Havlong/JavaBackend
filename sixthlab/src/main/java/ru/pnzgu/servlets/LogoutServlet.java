@@ -12,6 +12,8 @@ import java.io.IOException;
  * 07/12/2019
  * LogoutServlet
  *
+ * Сервлет, деавторизующий пользователя
+ *
  * @author havlong
  * @version 1.0
  */

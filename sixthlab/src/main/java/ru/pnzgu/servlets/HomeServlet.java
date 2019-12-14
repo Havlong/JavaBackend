@@ -14,6 +14,8 @@ import java.io.IOException;
  * 28.09.2019
  * HomeServlet
  *
+ * Сервлет, обслуживающий страницу с зарегистрированными пользователями
+ *
  * @author havlong
  * @version 1.0
  */

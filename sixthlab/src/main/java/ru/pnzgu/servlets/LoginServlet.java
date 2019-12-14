@@ -15,6 +15,8 @@ import java.io.IOException;
  * 28.09.2019
  * LoginServlet
  *
+ * Сервлет, отвечающий за процесс авторизации
+ *
  * @author havlong
  * @version 1.0
  */

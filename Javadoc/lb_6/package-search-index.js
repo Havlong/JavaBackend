@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"ru.pnzgu.filters"},{"l":"ru.pnzgu.models"},{"l":"ru.pnzgu.repositories"},{"l":"ru.pnzgu.servlets"},{"l":"ru.pnzgu.storages"}]

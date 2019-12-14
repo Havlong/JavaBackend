@@ -17,6 +17,17 @@ import java.io.IOException;
 @WebFilter("/home")
 public class AuthFilter implements Filter {
 
+    /**
+     * Фильтр позволяет защитить сервлет HomeServlet от незарегистрированных пользователей
+     * @param servletRequest the <code>ServletRequest</code> object contains the client's request
+     * @param servletResponse the <code>ServletResponse</code> object contains the filter's response
+     * @param filterChain the <code>FilterChain</code> for invoking the next filter or the resource
+     * @throws IOException if an I/O related error has occurred during the processing
+     * @throws ServletException if an exception occurs that interferes with the
+     *                          filter's normal operation
+     * @see ru.pnzgu.servlets.HomeServlet
+     * @see UnavailableException
+     */
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;

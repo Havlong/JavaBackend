@@ -8,6 +8,8 @@ import java.util.Objects;
  * 28.09.2019
  * User
  *
+ * Модель данных пользователя
+ *
  * @author havlong
  * @version 1.0
  */
